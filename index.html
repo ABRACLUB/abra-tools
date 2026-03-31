@@ -1,0 +1,571 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>be1.ru</title>
+</head>
+<body>
+<p>&lt;!DOCTYPE html&gt;</p>
+
+<p>&lt;html lang=&quot;ru&quot;&gt;</p>
+
+<p>&lt;head&gt;</p>
+
+<p>&lt;meta charset=&quot;UTF-8&quot;&gt;</p>
+
+<p>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</p>
+
+<p>&lt;title&gt;Декомпозиция выручки &mdash; ABRA CLUB&lt;/title&gt;</p>
+
+<p>&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&amp;family=Geologica:wght@300;400;500&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;</p>
+
+<p>&lt;style&gt;</p>
+
+<p>&nbsp;*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }</p>
+
+<p>&nbsp;:root {</p>
+
+<p>&nbsp; &nbsp;--bg: #0e0e0e; --surface: #181818; --surface2: #222222;</p>
+
+<p>&nbsp; &nbsp;--border: #2a2a2a; --accent: #c8f135; --text: #f0f0f0;</p>
+
+<p>&nbsp; &nbsp;--muted: #666; --radius: 16px;</p>
+
+<p>&nbsp;}</p>
+
+<p>&nbsp;body { background: var(--bg); color: var(--text); font-family: &#39;Geologica&#39;, sans-serif; font-weight: 300; min-height: 100vh; padding: 40px 20px 80px; }</p>
+
+<p>&nbsp;.noise { position: fixed; inset: 0; pointer-events: none; z-index: 0; background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox=&#39;0 0 256 256&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39;%3E%3Cfilter id=&#39;noise&#39;%3E%3CfeTurbulence type=&#39;fractalNoise&#39; baseFrequency=&#39;0.9&#39; numOctaves=&#39;4&#39; stitchTiles=&#39;stitch&#39;/%3E%3C/filter%3E%3Crect width=&#39;100%25&#39; height=&#39;100%25&#39; filter=&#39;url(%23noise)&#39; opacity=&#39;0.04&#39;/%3E%3C/svg%3E&quot;); opacity: 0.4; }</p>
+
+<p>&nbsp;.wrap { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;.header { margin-bottom: 48px; }</p>
+
+<p>&nbsp;.logo { font-family: &#39;Unbounded&#39;, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 24px; display: block; }</p>
+
+<p>&nbsp;h1 { font-family: &#39;Unbounded&#39;, sans-serif; font-size: clamp(26px, 5vw, 42px); font-weight: 900; line-height: 1.1; margin-bottom: 16px; }</p>
+
+<p>&nbsp;h1 span { color: var(--accent); }</p>
+
+<p>&nbsp;.subtitle { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 520px; }</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;.goal-block { background: var(--accent); border-radius: var(--radius); padding: 24px 28px; margin-bottom: 24px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }</p>
+
+<p>&nbsp;.goal-label { font-family: &#39;Unbounded&#39;, sans-serif; font-size: 11px; font-weight: 700; color: #0e0e0e; letter-spacing: 0.12em; white-space: nowrap; }</p>
+
+<p>&nbsp;.goal-input-wrap { flex: 1; min-width: 160px; }</p>
+
+<p>&nbsp;.goal-input { width: 100%; background: rgba(0,0,0,0.12); border: 2px solid rgba(0,0,0,0.15); border-radius: 10px; padding: 11px 14px; font-family: &#39;Unbounded&#39;, sans-serif; font-size: 20px; font-weight: 900; color: #0e0e0e; outline: none; }</p>
+
+<p>&nbsp;.goal-input::placeholder { color: rgba(0,0,0,0.3); }</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;.currency-select { font-family: &#39;Unbounded&#39;, sans-serif; font-size: 18px; font-weight: 900; color: #0e0e0e; background: rgba(0,0,0,0.12); border: 2px solid rgba(0,0,0,0.15); border-radius: 10px; padding: 11px 12px; cursor: pointer; outline: none; appearance: none; -webkit-appearance: none; }</p>
+
+<p>&nbsp;.currency-select option { background: #181818; color: #f0f0f0; font-family: sans-serif; font-size: 14px; }</p>
+
+<p>&nbsp;.per-month { font-family: &#39;Unbounded&#39;, sans-serif; font-size: 11px; font-weight: 700; color: rgba(0,0,0,0.4); white-space: nowrap; }</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }</p>
+
+<p>&nbsp;@media(max-width: 520px) { .grid { grid-template-columns: 1fr; } }</p>
+
+<p>&nbsp;.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }</p>
+
+<p>&nbsp;.card-label { font-size: 11px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; margin-bottom: 12px; font-weight: 500; }</p>
+
+<p>&nbsp;.card-input { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; font-family: &#39;Unbounded&#39;, sans-serif; font-size: 18px; font-weight: 700; color: var(--text); outline: none; transition: border-color 0.2s; }</p>
+
+<p>&nbsp;.card-input:focus { border-color: var(--accent); }</p>
+
+<p>&nbsp;.card-hint { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.5; }</p>
+
+<p>&nbsp;input[type=range] { -webkit-appearance: none; width: 100%; height: 4px; background: var(--border); border-radius: 2px; outline: none; cursor: pointer; margin-top: 10px; }</p>
+
+<p>&nbsp;input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: var(--accent); border-radius: 50%; cursor: pointer; }</p>
+
+<p>&nbsp;.slider-val { font-family: &#39;Unbounded&#39;, sans-serif; font-size: 20px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;.divider { display: flex; align-items: center; gap: 12px; margin: 8px 0; color: var(--muted); font-size: 12px; letter-spacing: 0.1em; }</p>
+
+<p>&nbsp;.divider::before, .divider::after { content: &#39;&#39;; flex: 1; height: 1px; background: var(--border); }</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;.results { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 24px; }</p>
+
+<p>&nbsp;.results-header { background: var(--surface2); padding: 16px 24px; border-bottom: 1px solid var(--border); font-family: &#39;Unbounded&#39;, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }</p>
+
+<p>&nbsp;.result-row { display: flex; align-items: center; padding: 20px 24px; border-bottom: 1px solid var(--border); gap: 16px; }</p>
+
+<p>&nbsp;.result-row:last-child { border-bottom: none; }</p>
+
+<p>&nbsp;.result-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }</p>
+
+<p>&nbsp;.green { background: rgba(200,241,53,0.12); }</p>
+
+<p>&nbsp;.orange { background: rgba(255,92,58,0.12); }</p>
+
+<p>&nbsp;.blue { background: rgba(100,160,255,0.12); }</p>
+
+<p>&nbsp;.purple { background: rgba(180,100,255,0.12); }</p>
+
+<p>&nbsp;.result-text { flex: 1; }</p>
+
+<p>&nbsp;.result-name { font-size: 13px; color: var(--muted); margin-bottom: 4px; }</p>
+
+<p>&nbsp;.result-val { font-family: &#39;Unbounded&#39;, sans-serif; font-size: 22px; font-weight: 900; }</p>
+
+<p>&nbsp;.result-val.hl { color: var(--accent); }</p>
+
+<p>&nbsp;.result-note { font-size: 11px; color: var(--muted); margin-top: 2px; }</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;.funnel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; }</p>
+
+<p>&nbsp;.funnel-title { font-family: &#39;Unbounded&#39;, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; margin-bottom: 20px; }</p>
+
+<p>&nbsp;.funnel-step { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }</p>
+
+<p>&nbsp;.funnel-bar-wrap { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }</p>
+
+<p>&nbsp;.funnel-bar { height: 100%; border-radius: 4px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1); }</p>
+
+<p>&nbsp;.funnel-label { font-size: 12px; color: var(--muted); width: 80px; text-align: right; white-space: nowrap; }</p>
+
+<p>&nbsp;.funnel-count { font-family: &#39;Unbounded&#39;, sans-serif; font-size: 13px; font-weight: 700; width: 80px; text-align: right; }</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;.insight { background: linear-gradient(135deg, rgba(200,241,53,0.08), rgba(200,241,53,0.03)); border: 1px solid rgba(200,241,53,0.2); border-radius: var(--radius); padding: 24px; margin-bottom: 24px; }</p>
+
+<p>&nbsp;.insight-label { font-family: &#39;Unbounded&#39;, sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; color: var(--accent); text-transform: uppercase; margin-bottom: 12px; }</p>
+
+<p>&nbsp;.insight-text { font-size: 14px; line-height: 1.7; color: #ccc; }</p>
+
+<p>&nbsp;.insight-text strong { color: var(--accent); font-weight: 500; }</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;.footer { text-align: center; padding-top: 32px; border-top: 1px solid var(--border); }</p>
+
+<p>&nbsp;.footer-logo { font-family: &#39;Unbounded&#39;, sans-serif; font-size: 13px; font-weight: 900; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 8px; }</p>
+
+<p>&nbsp;.footer-sub { font-size: 12px; color: var(--muted); }</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }</p>
+
+<p>&nbsp;.wrap &gt; * { animation: fadeUp 0.5s ease both; }</p>
+
+<p>&nbsp;.wrap &gt; *:nth-child(1) { animation-delay: 0.05s; }</p>
+
+<p>&nbsp;.wrap &gt; *:nth-child(2) { animation-delay: 0.1s; }</p>
+
+<p>&nbsp;.wrap &gt; *:nth-child(3) { animation-delay: 0.15s; }</p>
+
+<p>&nbsp;.wrap &gt; *:nth-child(4) { animation-delay: 0.2s; }</p>
+
+<p>&nbsp;.wrap &gt; *:nth-child(5) { animation-delay: 0.25s; }</p>
+
+<p>&nbsp;.wrap &gt; *:nth-child(6) { animation-delay: 0.3s; }</p>
+
+<p>&lt;/style&gt;</p>
+
+<p>&lt;/head&gt;</p>
+
+<p>&lt;body&gt;</p>
+
+<p>&lt;div class=&quot;noise&quot;&gt;&lt;/div&gt;</p>
+
+<p>&lt;div class=&quot;wrap&quot;&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;&lt;div class=&quot;header&quot;&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;span class=&quot;logo&quot;&gt;ABRA CLUB &mdash; ИНСТРУМЕНТЫ&lt;/span&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;h1&gt;Декомпозиция &lt;span&gt;выручки&lt;/span&gt;&lt;/h1&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;p class=&quot;subtitle&quot;&gt;Введи цель и параметры своей воронки &mdash; и узнай сколько лидов, касаний и сделок нужно чтобы выйти на нужную цифру.&lt;/p&gt;</p>
+
+<p>&nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;&lt;div class=&quot;goal-block&quot;&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;goal-label&quot;&gt;ЦЕЛЬ&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;goal-input-wrap&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;input class=&quot;goal-input&quot; type=&quot;number&quot; id=&quot;goal&quot; value=&quot;1000000&quot; placeholder=&quot;1 000 000&quot;&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;select class=&quot;currency-select&quot; id=&quot;currency&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;option value=&quot;₽&quot;&gt;₽&lt;/option&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;option value=&quot;$&quot;&gt;$&lt;/option&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;option value=&quot;&euro;&quot;&gt;&euro;&lt;/option&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;option value=&quot;&pound;&quot;&gt;&pound;&lt;/option&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;option value=&quot;₺&quot;&gt;₺&lt;/option&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;option value=&quot;₴&quot;&gt;₴&lt;/option&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;option value=&quot;₸&quot;&gt;₸&lt;/option&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;option value=&quot;&yen;&quot;&gt;&yen;&lt;/option&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/select&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;per-month&quot;&gt;/ МЕС&lt;/div&gt;</p>
+
+<p>&nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;&lt;div class=&quot;grid&quot;&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;card&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;card-label&quot;&gt;Средний чек&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;input class=&quot;card-input&quot; type=&quot;number&quot; id=&quot;check&quot; value=&quot;15000&quot; placeholder=&quot;15000&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;card-hint&quot;&gt;Сколько платит один клиент за сделку&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;card&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;card-label&quot;&gt;Конверсия в продажу&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;slider-val&quot;&gt;&lt;span id=&quot;conv-val&quot;&gt;20&lt;/span&gt;%&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;input type=&quot;range&quot; id=&quot;conv&quot; min=&quot;1&quot; max=&quot;80&quot; value=&quot;20&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;card-hint&quot;&gt;Сколько % лидов становятся клиентами&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;card&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;card-label&quot;&gt;Конверсия в лид&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;slider-val&quot;&gt;&lt;span id=&quot;lead-conv-val&quot;&gt;30&lt;/span&gt;%&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;input type=&quot;range&quot; id=&quot;lead-conv&quot; min=&quot;1&quot; max=&quot;80&quot; value=&quot;30&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;card-hint&quot;&gt;Сколько % охвата оставляет заявку&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;card&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;card-label&quot;&gt;Повторные покупки&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;slider-val&quot;&gt;&lt;span id=&quot;repeat-val&quot;&gt;0&lt;/span&gt;%&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;input type=&quot;range&quot; id=&quot;repeat&quot; min=&quot;0&quot; max=&quot;80&quot; value=&quot;0&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;card-hint&quot;&gt;% клиентов которые купят снова&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;&lt;div class=&quot;divider&quot;&gt;РЕЗУЛЬТАТ&lt;/div&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;&lt;div class=&quot;results&quot;&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;results-header&quot;&gt;Что нужно сделать за месяц&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;result-row&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-icon green&quot;&gt;🎯&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-text&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-name&quot;&gt;Продаж нужно закрыть&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-val hl&quot; id=&quot;r-deals&quot;&gt;&mdash;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-note&quot;&gt;сделок в месяц&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;result-row&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-icon orange&quot;&gt;📥&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-text&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-name&quot;&gt;Лидов нужно получить&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-val&quot; id=&quot;r-leads&quot;&gt;&mdash;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-note&quot;&gt;заявок / обращений в месяц&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;result-row&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-icon blue&quot;&gt;👁️&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-text&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-name&quot;&gt;Охват / трафик нужен&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-val&quot; id=&quot;r-traffic&quot;&gt;&mdash;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-note&quot;&gt;уникальных контактов с оффером&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;result-row&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-icon purple&quot;&gt;📅&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-text&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-name&quot;&gt;В день это&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-val&quot; id=&quot;r-daily&quot;&gt;&mdash;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;&lt;div class=&quot;result-note&quot;&gt;лидов каждый рабочий день&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;&lt;div class=&quot;funnel&quot;&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;funnel-title&quot;&gt;Визуализация воронки&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;funnel-step&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;funnel-label&quot;&gt;Охват&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;funnel-bar-wrap&quot;&gt;&lt;div class=&quot;funnel-bar&quot; id=&quot;bar-traffic&quot; style=&quot;width:100%;background:#c8f135;opacity:0.35&quot;&gt;&lt;/div&gt;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;funnel-count&quot; id=&quot;fn-traffic&quot; style=&quot;color:#c8f135&quot;&gt;&mdash;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;funnel-step&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;funnel-label&quot;&gt;Лиды&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;funnel-bar-wrap&quot;&gt;&lt;div class=&quot;funnel-bar&quot; id=&quot;bar-leads&quot; style=&quot;width:60%;background:#64a0ff;opacity:0.7&quot;&gt;&lt;/div&gt;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;funnel-count&quot; id=&quot;fn-leads&quot; style=&quot;color:#64a0ff&quot;&gt;&mdash;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;funnel-step&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;funnel-label&quot;&gt;Продажи&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;funnel-bar-wrap&quot;&gt;&lt;div class=&quot;funnel-bar&quot; id=&quot;bar-deals&quot; style=&quot;width:20%;background:#ff5c3a&quot;&gt;&lt;/div&gt;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;funnel-count&quot; id=&quot;fn-deals&quot; style=&quot;color:#ff5c3a&quot;&gt;&mdash;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;funnel-step&quot;&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;funnel-label&quot;&gt;Выручка&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;funnel-bar-wrap&quot;&gt;&lt;div class=&quot;funnel-bar&quot; id=&quot;bar-rev&quot; style=&quot;width:10%;background:#c8f135&quot;&gt;&lt;/div&gt;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp; &nbsp;&lt;div class=&quot;funnel-count&quot; id=&quot;fn-rev&quot; style=&quot;color:#c8f135&quot;&gt;&mdash;&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;&lt;div class=&quot;insight&quot;&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;insight-label&quot;&gt;💡 Инсайт&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;insight-text&quot; id=&quot;insight-text&quot;&gt;Заполни данные выше &mdash; и здесь появится главный вывод по твоей воронке.&lt;/div&gt;</p>
+
+<p>&nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;&lt;div class=&quot;footer&quot;&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;footer-logo&quot;&gt;ABRA CLUB&lt;/div&gt;</p>
+
+<p>&nbsp; &nbsp;&lt;div class=&quot;footer-sub&quot;&gt;Экосистема для тех, кто про маркетинг и продажи&lt;/div&gt;</p>
+
+<p>&nbsp;&lt;/div&gt;</p>
+
+<p>&nbsp;</p>
+
+<p>&lt;/div&gt;</p>
+
+<p>&lt;script&gt;</p>
+
+<p>&nbsp;const $ = id =&gt; document.getElementById(id);</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;function fmt(n) {</p>
+
+<p>&nbsp; &nbsp;if (n &gt;= 1000000) return (n/1000000).toFixed(1).replace(/\.0$/,&#39;&#39;) + &#39; млн&#39;;</p>
+
+<p>&nbsp; &nbsp;if (n &gt;= 1000) return Math.round(n/1000) + &#39; тыс&#39;;</p>
+
+<p>&nbsp; &nbsp;return Math.round(n).toString();</p>
+
+<p>&nbsp;}</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;function calc() {</p>
+
+<p>&nbsp; &nbsp;const goal = parseFloat($(&#39;goal&#39;).value) || 0;</p>
+
+<p>&nbsp; &nbsp;const check = parseFloat($(&#39;check&#39;).value) || 1;</p>
+
+<p>&nbsp; &nbsp;const conv = parseFloat($(&#39;conv&#39;).value) / 100;</p>
+
+<p>&nbsp; &nbsp;const leadConv = parseFloat($(&#39;lead-conv&#39;).value) / 100;</p>
+
+<p>&nbsp; &nbsp;const repeat = parseFloat($(&#39;repeat&#39;).value) / 100;</p>
+
+<p>&nbsp; &nbsp;const cur = $(&#39;currency&#39;).value;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp; &nbsp;const dealsNeeded = goal / check;</p>
+
+<p>&nbsp; &nbsp;const newDealsNeeded = dealsNeeded * (1 - repeat);</p>
+
+<p>&nbsp; &nbsp;const leadsNeeded = newDealsNeeded / conv;</p>
+
+<p>&nbsp; &nbsp;const trafficNeeded = leadsNeeded / leadConv;</p>
+
+<p>&nbsp; &nbsp;const dailyLeads = leadsNeeded / 22;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp; &nbsp;$(&#39;r-deals&#39;).textContent = Math.ceil(dealsNeeded);</p>
+
+<p>&nbsp; &nbsp;$(&#39;r-leads&#39;).textContent = Math.ceil(leadsNeeded);</p>
+
+<p>&nbsp; &nbsp;$(&#39;r-traffic&#39;).textContent = fmt(Math.ceil(trafficNeeded));</p>
+
+<p>&nbsp; &nbsp;$(&#39;r-daily&#39;).textContent = Math.ceil(dailyLeads);</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp; &nbsp;$(&#39;fn-traffic&#39;).textContent = fmt(Math.ceil(trafficNeeded));</p>
+
+<p>&nbsp; &nbsp;$(&#39;fn-leads&#39;).textContent = Math.ceil(leadsNeeded);</p>
+
+<p>&nbsp; &nbsp;$(&#39;fn-deals&#39;).textContent = Math.ceil(dealsNeeded);</p>
+
+<p>&nbsp; &nbsp;$(&#39;fn-rev&#39;).textContent = fmt(goal) + &#39; &#39; + cur;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp; &nbsp;const max = trafficNeeded;</p>
+
+<p>&nbsp; &nbsp;$(&#39;bar-traffic&#39;).style.width = &#39;100%&#39;;</p>
+
+<p>&nbsp; &nbsp;$(&#39;bar-leads&#39;).style.width = Math.max(4, (leadsNeeded/max)*100) + &#39;%&#39;;</p>
+
+<p>&nbsp; &nbsp;$(&#39;bar-deals&#39;).style.width = Math.max(2, (dealsNeeded/max)*100) + &#39;%&#39;;</p>
+
+<p>&nbsp; &nbsp;$(&#39;bar-rev&#39;).style.width = Math.max(2, (dealsNeeded/max)*100) + &#39;%&#39;;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp; &nbsp;const leadsPerDeal = Math.round(leadsNeeded / Math.max(1, dealsNeeded));</p>
+
+<p>&nbsp; &nbsp;let insight = &#39;&#39;;</p>
+
+<p>&nbsp; &nbsp;if (conv &lt; 0.05) {</p>
+
+<p>&nbsp; &nbsp; &nbsp;insight = `Твоя конверсия в продажу &lt;strong&gt;${Math.round(conv*100)}%&lt;/strong&gt; &mdash; это очень низко. Главный рычаг сейчас не трафик, а качество лидов и скрипт продаж. Подними конверсию до 15-20% &mdash; и нужный охват упадёт в разы.`;</p>
+
+<p>&nbsp; &nbsp;} else if (leadConv &lt; 0.05) {</p>
+
+<p>&nbsp; &nbsp; &nbsp;insight = `Конверсия из охвата в лид &lt;strong&gt;${Math.round(leadConv*100)}%&lt;/strong&gt; говорит о слабом оффере. Люди видят предложение, но не реагируют. Попробуй изменить формулировку боли или добавить конкретный результат.`;</p>
+
+<p>&nbsp; &nbsp;} else if (repeat &gt; 0.3) {</p>
+
+<p>&nbsp; &nbsp; &nbsp;insight = `Отлично &mdash; у тебя &lt;strong&gt;${Math.round(repeat*100)}%&lt;/strong&gt; повторных покупок. Это сильный актив. Фокус на удержании работает лучше чем постоянный поиск новых клиентов.`;</p>
+
+<p>&nbsp; &nbsp;} else {</p>
+
+<p>&nbsp; &nbsp; &nbsp;insight = `Чтобы выйти на &lt;strong&gt;${fmt(goal)} ${cur}&lt;/strong&gt;, нужно касаться примерно &lt;strong&gt;${fmt(Math.ceil(trafficNeeded))} человек&lt;/strong&gt; в месяц. На каждую сделку приходится &lt;strong&gt;${leadsPerDeal} лидов&lt;/strong&gt;. Главный вопрос: откуда возьмёшь этот трафик и как будешь прогревать?`;</p>
+
+<p>&nbsp; &nbsp;}</p>
+
+<p>&nbsp; &nbsp;$(&#39;insight-text&#39;).innerHTML = insight;</p>
+
+<p>&nbsp;}</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;$(&#39;conv&#39;).addEventListener(&#39;input&#39;, e =&gt; { $(&#39;conv-val&#39;).textContent = e.target.value; calc(); });</p>
+
+<p>&nbsp;$(&#39;lead-conv&#39;).addEventListener(&#39;input&#39;, e =&gt; { $(&#39;lead-conv-val&#39;).textContent = e.target.value; calc(); });</p>
+
+<p>&nbsp;$(&#39;repeat&#39;).addEventListener(&#39;input&#39;, e =&gt; { $(&#39;repeat-val&#39;).textContent = e.target.value; calc(); });</p>
+
+<p>&nbsp;$(&#39;goal&#39;).addEventListener(&#39;input&#39;, calc);</p>
+
+<p>&nbsp;$(&#39;check&#39;).addEventListener(&#39;input&#39;, calc);</p>
+
+<p>&nbsp;$(&#39;currency&#39;).addEventListener(&#39;change&#39;, calc);</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;calc();</p>
+
+<p>&lt;/script&gt;</p>
+
+<p>&lt;/body&gt;</p>
+
+<p>&lt;/html&gt;</p>
+
+<p>&nbsp;</p>
+</body>
+</html>
